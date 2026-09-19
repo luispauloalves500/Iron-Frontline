@@ -1,45 +1,42 @@
 # IRON FRONTLINE v1.5
 
-Run-and-gun arcade em HTML5 Canvas (384×216, pixel art). Três missões, chefes, armas, reféns e save local.
+Run-and-gun arcade em HTML5 Canvas (384×216).
 
-## Jogabilidade
+Repo: https://github.com/luispauloalves500/Iron-Frontline
 
-- **Mover:** A/D ou stick
-- **Pular:** W / Espaço
-- **Agachar:** S
-- **Atirar:** J
-- **Granada:** K
-- **Melee:** F
-- **Recarregar:** R (automático com pente vazio)
-- **Pausar:** Esc
+## Controles
 
-Controles touch no celular. Gamepad suportado.
+- A/D mover · W/Espaço pular · S agachar
+- J atirar · K granada · F melee · R recarregar · Esc pausar
 
-### Missões
+## O que já está neste repo
 
-1. CITY UNDER FIRE
-2. DESERT ASSAULT
-3. IRON HARBOR
+- `package.json` / `tsconfig.json` / `.gitignore`
+- `src/game/assets.ts` `audio.ts` `input.ts` `save.ts`
+- `src/routes` + `src/router.tsx` + `src/routeTree.gen.ts`
+- `src/styles.css`
+- stubs de auth/error para o app abrir fora do builder
 
-Progresso e melhores scores ficam no `localStorage`.
+## Ainda falta copiar do ZIP local
 
-## Melhorias desta publicação
+Estes arquivos são grandes demais para a API usada aqui:
 
-- Indicador visual de reload no HUD
-- Ciclo de volume persistente (botão VOL no menu: mudo / 35% / 70% / 100%)
-- Volume restaurado do save ao iniciar
-- `package.json` identificado como `iron-frontline` v1.5.0
-- `.gitignore` para Node/Vite
+- `src/game/engine.ts` (~65 KB) — motor do jogo
+- `src/components/game-view.tsx` — menu/HUD/touch
+- `vite.config.ts` e pasta `scripts/`
+- `public/sprites/` (PNGs/WebPs)
 
-## Rodar localmente
+Do seu PC, com o ZIP extraído:
 
 ```bash
-npm install
-npm run dev
+git clone https://github.com/luispauloalves500/Iron-Frontline.git
+cd Iron-Frontline
+cp -R /caminho/do/zip/src/game/engine.ts src/game/
+cp -R /caminho/do/zip/src/components/game-view.tsx src/components/
+cp -R /caminho/do/zip/public public
+cp /caminho/do/zip/vite.config.ts .
+cp -R /caminho/do/zip/scripts scripts
+git add .
+git commit -m "Add engine, HUD and sprites"
+git push
 ```
-
-Sprites esperados em `public/sprites/` — veja `PLAYER-SPRITES-INTEGRATION.md` e `src/game/assets.ts`.
-
-## Stack
-
-Vite · React 19 · TanStack Router/Start · Tailwind 4 · Canvas 2D
